@@ -4,6 +4,11 @@ JDK 8
 =====
 https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html#license-lightbox
 
+or
+
+https://drive.google.com/file/d/1zXJcNOxU9CtKV0bB7F4OU19Fv1t05ugk/view?usp=sharing
+
+
 STS Download
 ============
 https://dist.springsource.com/release/STS/3.9.11.RELEASE/dist/e4.14/spring-tool-suite-3.9.11.RELEASE-e4.14.0-win32-x86_64.zip
@@ -11,6 +16,12 @@ https://dist.springsource.com/release/STS/3.9.11.RELEASE/dist/e4.14/spring-tool-
 Spring Distrubution 5.0
 =======================
 https://repo.spring.io/release/org/springframework/spring/5.0.2.RELEASE/
+
+or
+
+https://drive.google.com/file/d/1zXJcNOxU9CtKV0bB7F4OU19Fv1t05ugk/view?usp=sharing
+
+
 
 
 Enterprise Application
@@ -202,15 +213,80 @@ Spring Bean Scope : singleton|prototype|request|session
 
 
 
+
+
 Spring Bean Scope
 ==================
 <bean  scope="singleton"/>
 
-singleton -Stateless Application
-prototype -Stateful Application
+singleton -Stateless Application   -> can be shared across multiple clients at same time
+prototype -Stateful Application    -> can not be shared across multiple clients at same time
 
 request  -web
 session  -web
+
+
+day2    :21-Aug-2021
+=====================
+
+Auto-wiring
+============
+Wiring - It's a mechanisam of associating the beans with each other
+
+Auto-wiring -It's a mechanisam of delegating the responsisbilty of associating the beans with each other to the spring container
+
+auto-wire="no|byType|byName|constructor"
+
+
+byType: use if only one bean of specific type is avaiabale in xml
+byName: use if more than one bean of specific type is avaiabale xml
+
+Annotation Based configuration
+===============================
+                                           @Component
+
+              @Controller                  @Service                   @Reposiotry
+
+              Controller                   Service Layer               Dao Layer
+
+
+<context:component-scan base-package="com"/>
+=============================================
+
+Scans the classpath for annotated components that will be auto-registered as Spring beans.
+By default, the Spring- provided
+
+@Component,
+@Repository, 
+@Service, 
+@Controller,
+@RestController, 
+@ControllerAdvice,
+@Configuration 
+
+stereotypes will be detected. 
+
+
+
+
+@Configuration   => <beans.xml>
+
+@PostConstruct   => init-method
+
+@PreDestroy      =>destroy-method
+
+@Autowire        =>autwire (byType)   can be applied to constructor/setter/intreface
+
+@Qualifier       =>byName 
+   
+
+<bean    init-method=""   destroy-method=""/>    @PostConstruct    @PreDestroy
+
+<bean    autowire="no|constructor|byName|byType"/>    
+
+@Autowire  =>default byType
+
+
 
 
 
