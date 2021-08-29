@@ -288,7 +288,121 @@ stereotypes will be detected.
 
 
 
+day3    :  28-Aug-2021  & 29-Aug-2021
+===============================
+Todays Topic :
+
+1.JdbcTemplate 
+2.Property PlaceHolderConfigurer
 
 
 
-         
+CustomerMainApp
+              CustomerService
+                           CustomerDao
+                                        MapCustomerDaoImpl
+                                                                CustomerMap
+               
+
+                                       MySQLCustomerDaoImpl
+                                                                 JdbcTemplate
+                                                                               DataSource
+                                                                                       PropertyPlaceHolderConfigurer
+					                db.properties
+							 driverClassName
+                                                                                                                 url
+                                                                                                                 username
+                                                                                                                 password
+
+                                                                                                           
+
+
+
+<!-- jdbcTemplate -->
+<bean class="org.springframework.jdbc.core.JdbcTemplate" id="jdbcTemplate">
+<property name="dataSource"   ref="dataSource"/>
+</bean>
+
+
+<!-- DriverManagerDataSource -->
+
+<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
+<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+<property name="url" value="jdbc:mysql://localhost:3306/company"/>
+<property name="username" value="root"/>
+<property name="password" value="admin"/>
+</bean>
+
+
+
+MySQL  -Script
+ ===========
+drop database company;
+create database company;
+use  company;
+create table customers (customerId int primary key,name text,pan text(10),mobile text(10),email text,address text,dob date);
+insert into customers values(1,'Pradeep Chinchole','ampid9854d','9158652627','pradeepch82@gmail.com','Pune','2011-10-10');
+insert into customers values(2,'Pradeep Chinchole','ampid9854d','9158652627','pradeepch82@gmail.com','Pune','2011-10-10');
+insert into customers values(3,'Pradeep Chinchole','ampid9854d','9158652627','pradeepch82@gmail.com','Pune','2011-10-10');
+select * from customers;
+
+
+
+1.RowMapper interface allows to map a row of the relations with the instance of user-defined class.
+     It iterates the ResultSet internally and adds it into the collection. So we don't need to write a lot of code to fetch the records as ResultSetExtractor.
+
+2.Advantage of RowMapper over ResultSetExtractor
+  RowMapper saves a lot of code becuase it internally adds the data of ResultSet into the collection.
+
+3.Method of RowMapper interface
+    It defines only one method mapRow that accepts ResultSet instance and int as the parameter list.
+   
+      public T mapRow(ResultSet rs, int rowNumber)throws SQLException  
+
+
+
+JdbcTemplate methods
+===================
+int update(String sql)               :DML   -insert,update,delete
+List query(String sql)               :DRL   -select
+T queryForObject(String sql)   :DRL   -select
+
+
+SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
+
+date to string  => String  sdf.format(Date date)
+string to date  => Date   sdf.parse(String date)
+
+
+
+day4   Spring Web MVC
+===================
+1.Restful Web API               => Map 
+2.Front end with JSP          => MySQL
+
+
+Spring Boot
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
