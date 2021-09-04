@@ -289,7 +289,7 @@ stereotypes will be detected.
 
 
 day3    :  28-Aug-2021  & 29-Aug-2021
-===============================
+=====================================
 Todays Topic :
 
 1.JdbcTemplate 
@@ -375,16 +375,178 @@ string to date  => Date   sdf.parse(String date)
 
 
 
-day4   Spring Web MVC
-===================
-1.Restful Web API               => Map 
+
+
+day4 : 4-Sep-2021    Spring Web MVC
+====================================
+1.Restful Web API             => Map 
 2.Front end with JSP          => MySQL
 
 
-Spring Boot
 
 
 
+http://localhost:8080/spring-web-mvc-cms/spring/hello
+http://localhost:8080/spring-web-mvc-cms/spring/welcome
+http://localhost:8080/spring-web-mvc-cms/spring/greet
+http://localhost:8080/spring-web-mvc-cms/spring/today
+
+
+
+1.Tomcat Download :https://apachemirror.wuchna.com/tomcat/tomcat-9/v9.0.46/bin/apache-tomcat-9.0.46.zip
+
+2.Add Spring jar file to Tomcat lib directory
+
+3.Create a dynamic web project with web.xml and Target runtime as Tomcat 9.0
+
+4.Register a DispatcherServlet in web.xml as below
+
+<servlet>
+<servlet-name>spring</servlet-name>
+<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+<load-on-startup>1</load-on-startup>
+</servlet>
+
+<servlet-mapping>
+<servlet-name>spring</servlet-name>
+<url-pattern>/spring/*</url-pattern>
+</servlet-mapping>
+
+5.By default DispatcherServlet will load the file with name (DispatcherServletName-serlvet.xml) 
+  So create a file spring-servlet.xml in WEB-INF
+
+6.Register a Internal ResourceViewResolver and enable componentscanning
+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+<mvc:annotation-driven/>
+<context:component-scan base-package="com"/>
+<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+<property name="prefix" value="/WEB-INF/views/"/>
+<property name="suffix" value=".jsp"/>
+</bean>
+
+</beans>
+
+
+7.Create a Root Web application Context
+
+by default it will search applicationContext.xml
+  
+<listener>
+<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+</listener>
+
+
+<context-param>
+<param-name>contextConfigLocation</param-name>
+<param-value>/WEB-INF/applicationContext.xml</param-value>
+</context-param>
+
+
+
+Java Web MVC Models
+====================
+MVC (                 Model                   View                   Controller)
+================================================================================
+JSP Model-1          Java Bean                JSP                     JSP
+JSP Model-2          Java Bean                JSP                     Servlet    (Struts1.x,JSF 1.x,2.x ,Spring Web MVC)
+JSP Model-3          Java Bean                JSP                     Filter     (Struts2.x)
+JSP Model-4          Java Bean                JSP                     Tag Handler
+
+
+Spring Web MVC follows MVC2 /JSP Model2
+
+
+Spring Web MVC
+==============
+Develop a Spring Web MVC application to build RESTful Web API to perform CRUD Operations
+
+
+URI                      METHOD                           OPERATION
+========================================================================================= 
+/customers               GET                               GET ALL CUSTOMERS
+/customers/1             GET                               GET CUSTOMER BY ID
+/customers/1             PUT                               UPDATE CUSTOMER BY ID
+/customers/1             DELETE                            DELETE CUSTOMER BY ID
+/customers               POST                              ADD CUSTOMER 
+
+
+
+HTTP status codes
+======================
+200    :   OK
+201    :   Created
+500    :   INTERNAL SERVER ERROR
+404    :   NOT FOUND
+204    :   NO CONTENT
+401    :   INVALID CREDENTAILS
+403    :   FORBIDDEN
+405    :   METHOD NOT ALLOWED
+
+
+
+@RestController   =>  @Controller +  @ResponseBody 
+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <mvc:annotation-driven/>
+</beans>
+ 
+
+
+Java To JSON    : @ResponseBody
+
+JSON to Java    : @RequestBody
+================================
+
+
+@ResponseBody  => Server to Client =>  Java Object to JSON or XML   => Accept       = application/json 
+
+@RequestBody  =>  Client to Server =>  JSON or XML to Java Object   => Content-Type = application/json
+
+
+@ResponseBody  => Server to Client => Java Object to JSON or XML  => Accept       = application/json 
+
+@RequestBody  => Client to Server =>  JSON or XML Java Object to  => Content-Type = application/json
+
+
+For Message Conversion :
+
+Step 1:  add below tag in spring-config file
+=======
+<mvc:annotation-driven/>
+
+Step 2:  Add below jars in class path
+=======
+jackson-core-2.9.8
+jackson-annotations-2.9.8.jar
+jackson-databind-2.9.8.jar
+
+
+
+hello   =>       /WEB-INF/views/hello.jsp
+welcome =>       /WEB-INF/views/welcome.jsp
+greet    =>       /WEB-INF/views/greet.jsp
 
 
 
