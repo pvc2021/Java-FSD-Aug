@@ -543,6 +543,10 @@ jackson-annotations-2.9.8.jar
 jackson-databind-2.9.8.jar
 
 
+https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core/2.9.8
+https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations/2.9.8
+https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind/2.9.8
+
 
 hello   =>       /WEB-INF/views/hello.jsp
 welcome =>       /WEB-INF/views/welcome.jsp
