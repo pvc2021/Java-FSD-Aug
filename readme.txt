@@ -438,7 +438,7 @@ http://localhost:8080/spring-web-mvc-cms/spring/today
 </beans>
 
 
-7.Create a Root Web application Context
+7.Create a Root Web application Context by adding listener in web.xml
 
 by default it will search applicationContext.xml
   
@@ -446,12 +446,10 @@ by default it will search applicationContext.xml
 <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 </listener>
 
-
 <context-param>
 <param-name>contextConfigLocation</param-name>
 <param-value>/WEB-INF/applicationContext.xml</param-value>
 </context-param>
-
 
 
 Java Web MVC Models
@@ -553,7 +551,13 @@ welcome =>       /WEB-INF/views/welcome.jsp
 greet    =>       /WEB-INF/views/greet.jsp
 
 
+http://localhost:8080/spring-web-mvc-cms/spring/*
+http://localhost:8080/spring-web-mvc-cms/rest/*
 
+
+/spring/*   spring-ds    Controller        Service              Dao/Repository (mySQL)
+
+/rest/*     rest-ds      Controller        Service              Dao/Repository (map)
 
 
 
