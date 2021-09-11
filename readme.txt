@@ -560,6 +560,207 @@ http://localhost:8080/spring-web-mvc-cms/rest/*
 /rest/*     rest-ds      Controller        Service              Dao/Repository (map)
 
 
+day5  :  11-Sep-2021 
+======================
+
+What is Spring Boot?
+=====================
+1.Spring Boot provides a good platform for Java developers to develop a stand-alone and 
+production-grade spring application that you can just run.
+2.You can get started with minimum configurations without the need for an entire Spring configuration setup.
+
+Spring Boot offers the following advantages to its developers -
+=================================================================
+1.Easy to understand and develop spring applications
+2.Increases productivity
+3.Reduces the development time
+
+Goals
+======
+1.To avoid complex XML configuration in Spring
+2.To develop a production ready Spring applications in an easier way
+3.To reduce the development time and run the application independently
+4.Offer an easier way of getting started with the application
+
+Why Spring Boot?
+================
+
+You can choose Spring Boot because of the features and benefits it offers as given here -
+
+1.It provides a flexible way to configure Java Beans, XML configurations, and Database Transactions.
+
+2.It provides a powerful batch processing and manages REST endpoints.
+
+3.In Spring Boot, everything is auto configured; no manual configurations are needed.
+
+4.It offers annotation-based spring application
+
+5.Eases dependency management (POM)
+
+6.It includes Embedded Servlet Container
+
+
+How does it work?
+=>Spring Boot automatically configures your application based on the dependencies you have added to the project by using
+ @EnableAutoConfiguration annotation. 
+ 
+ For example, if MySQL database is on your classpath, but you have not configured any database connection, 
+ then Spring Boot auto-configures an in-memory database.
+
+=>The entry point of the spring boot application is the class contains @SpringBootApplication annotation 
+   and the main method.
+
+Spring Boot automatically scans all the components included in the project by using @ComponentScan annotation.
+
+
+
+Spring Boot Starters   (https://start.spring.io/)
+=====================
+=>Handling dependency management is a difficult task for big projects. 
+=>Spring Boot resolves this problem by providing a set of dependencies for developers convenience.
+=>For example, if you want to use Spring and JPA for database access, 
+    it is sufficient if you include spring-boot-starter-data-jpa dependency in your project.
+
+Note that all Spring Boot starters follow the same naming pattern spring-boot-starter- *, 
+  where * indicates that it is a type of the application.
+
+Examples
+Look at the following Spring Boot starters explained below for a better understanding -
+
+1.Spring Boot Starter Actuator dependency is used to monitor and manage your application. Its code is shown below -
+
+<dependency>
+   <groupId>org.springframework.boot</groupId>
+   <artifactId>spring-boot-starter-actuator</artifactId>
+</dependency>
+
+
+2.Spring Boot Starter Security dependency is used for Spring Security. Its code is shown below -
+
+<dependency>
+   <groupId>org.springframework.boot</groupId>
+   <artifactId>spring-boot-starter-security</artifactId>
+</dependency>
+
+
+3.Spring Boot Starter web dependency is used to write a Rest Endpoints. Its code is shown below -
+
+<dependency>
+   <groupId>org.springframework.boot</groupId>
+   <artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+      
+4.Spring Boot Starter Test dependency is used for writing Test cases. Its code is shown below -
+
+<dependency>
+   <groupId>org.springframework.boot</groupId>
+   <artifactId>spring-boot-starter-test</artifactId>
+</dependency>      
+      
+      
+Auto Configuration
+====================
+
+
+1.Spring Boot CLI (https://repo.spring.io/release/org/springframework/boot/spring-boot-cli/2.5.4/spring-boot-cli-2.5.4-bin.zip)
+
+2.https://start.spring.io/
+3.STS
+
+
+
+https://start.spring.io/
+
+
+
+
+Spring Web WEB
+==================
+Build web, including RESTful, applications using Spring MVC. Uses Apache Tomcat as the default embedded container.
+
+Spring Boot DevTools DEVELOPER TOOLS
+=====================================
+Provides fast application restarts, LiveReload, and configurations for enhanced development experience.
+
+Spring Boot Actuator OPS
+========================
+Supports built in (or custom) endpoints that let you monitor and manage your application - 
+such as application health, metrics, sessions, etc.
+
+Spring Security SECURITY
+=========================
+Highly customizable authentication and access-control framework for Spring applications.
+
+Spring Data JPA SQL
+===================
+Persist data in SQL stores with Java Persistence API using Spring Data and Hibernate.
+
+CRUDRepository                CRUDRepository
+     |                              |
+PagingAndSortingRespistory    MongoRepository
+     |
+JPAReposiotry
+
+
+
+
+Spring Data MongoDB NOSQL
+=========================
+Store data in flexible, JSON-like documents, meaning fields can vary from document to document and data structure can be changed over time.
+
+
+Spring Security
+================
+Default username :user
+Password         :generated on console
+
+
+To customize it
+================
+
+add below properties in application.properties
+==============================================
+
+spring.security.user.name=pradeep
+spring.security.user.password==pradeep
+
+
+https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html
+
+
+spring.datasource.url=jdbc:mysql://localhost:3306/company
+spring.datasource.driverClassName=com.mysql.jdbc.Driver
+spring.datasource.username=root
+spring.datasource.password=admin
+#spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+
+
+#InternalResourceViewResolver 
+spring.mvc.view.prefix=/WEB-INF/views/
+spring.mvc.view.suffix=.jsp
+
+
+
+<!--   To generate JSP output -->
+		
+
+                <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+		</dependency>
+		
+
+
 
 
 
