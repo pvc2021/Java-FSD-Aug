@@ -560,7 +560,7 @@ http://localhost:8080/spring-web-mvc-cms/rest/*
 /rest/*     rest-ds      Controller        Service              Dao/Repository (map)
 
 
-day5  :  11-Sep-2021 
+day6  :  11-Sep-2021 
 ======================
 
 What is Spring Boot?
@@ -709,20 +709,6 @@ Spring Data MongoDB NOSQL
 Store data in flexible, JSON-like documents, meaning fields can vary from document to document and data structure can be changed over time.
 
 
-Spring Security
-================
-Default username :user
-Password         :generated on console
-
-
-To customize it
-================
-
-add below properties in application.properties
-==============================================
-
-spring.security.user.name=pradeep
-spring.security.user.password==pradeep
 
 
 https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html
@@ -759,6 +745,167 @@ spring.mvc.view.suffix=.jsp
 			<artifactId>jstl</artifactId>
 		</dependency>
 		
+
+
+day7:  11-Sep-2021 
+======================
+Todays Topics
+==============
+1.Spring Boot Security Customization
+
+Spring Security
+================
+Default username :user
+Password         :generated on console
+
+
+To customize it
+================
+
+add below properties in application.properties
+==============================================
+spring.security.user.name=pradeep
+spring.security.user.password=pradeep
+
+
+JAAS -API (Java Authentication and Authorization Service)
+
+
+401    :   INVALID CREDENTAILS   :NOT Authenticated
+403    :   FORBIDDEN             :NOT AUTHORIZED 
+
+
+
+Java Authentication and Authorization Service
+
+Authentication
+================
+1.BASIC  (Before Spring Boot 2.x)
+2.DIGEST
+3.FORM BASED (From Spring Boot 2.x)  : Endpoints login,logout
+
+
+Authorization (role)
+====================
+
+To Customize default JAAS
+
+We should write a configuration class by extending WebSecurityConfigureerAdapter and override configure methods.
+
+
+@Configuration
+public class BankConfig  extends WebSecurityConfigurerAdapter{
+
+	@Autowired
+	private DataSource dataSource;
+	
+	
+	public BankConfig() {
+	System.out.println("==========BankConfig created=================");
+	}
+	
+	
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		System.out.println("==========BankConfig created  AuthManagerBuilder=================");
+		//super.configure(auth);
+	
+		
+		/*
+		 * auth.inMemoryAuthentication()
+		 * .withUser("RAM").password("{noop}RAM").roles("ADMIN").and()
+		 * .withUser("RAHIM").password("{noop}RAHIM").roles("STUDENT").and()
+		 * .withUser("DAVID").password("{noop}DAVID").roles("TEACHER");
+		 * 
+		 * 
+		 */
+		
+		auth.jdbcAuthentication()
+		    .passwordEncoder(new BCryptPasswordEncoder())
+		    .dataSource(dataSource);
+		
+	}
+	
+	
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		System.out.println("==========BankConfig created  HttpSecurity=================");
+		//super.configure(http);  Default is Form Based
+		
+		
+		http.authorizeRequests()
+		.antMatchers("/rest/*").permitAll()
+		.antMatchers("/rest/*").denyAll()
+		.antMatchers("/spring/*").hasRole("ADMIN")
+		.antMatchers("/spring/welcome","/spring/today").hasRole("STUDENT")
+		.antMatchers("/spring/hello","/spring/greet").hasAnyRole("ADMIN","TEACHER")
+	
+		
+		    .anyRequest()
+		    .authenticated()
+		    .and()
+		    .formLogin();//  Form Based
+		    //.httpBasic();// Basic Auth
+		
+	}
+	
+	
+}
+
+
+data.sql
+=========
+insert into users(username, password, enabled)values('RAM','$2a$10$ge2ybXdrHWmY6qNWOkCaze2jAgTfeTovMsbUciUJCzIcfG/x.YGZi',true);
+insert into authorities(username,authority)values('RAM','ROLE_ADMIN');
+ 
+insert into users(username, password, enabled)values('RAHIM','$2a$10$ZuVLPUbpOc7Bxeu5GRdD4.XH0XWl4H6103a9OqNP58PTX/zqeGe1W',true);
+insert into authorities(username,authority)values('RAHIM','ROLE_STUDENT');
+
+insert into users(username, password, enabled)values('DAVID','$2a$10$9T6gPdQEug.dtrOorCwlVeQLd14OzZv649bGnl2fv3/jl4NZVc22u',true);
+insert into authorities(username,authority)values('DAVID','ROLE_TEACHER');
+
+schema.sql
+============
+drop table authorities;
+drop table users;
+
+create table users (
+    username varchar(50) not null primary key,
+    password varchar(120) not null,
+    enabled boolean not null
+);
+
+create table authorities (
+    username varchar(50) not null,
+    authority varchar(50) not null,
+    foreign key (username) references users (username)
+);
+
+
+
+application.properties
+=========================
+spring.datasource.initialization-mode=ALWAYS
+
+
+
+#datasource details
+#spring.datasource.url=${RDS_URL:jdbc:h2:mem:testdb}
+#spring.datasource.driverClassName=${RDS_DRIVER_CLASS:org.h2.Driver}
+#spring.datasource.username=${RDS_USERNAME:sa}
+#spring.datasource.password=${RDS_PASSWORD:blank}
+#spring.jpa.database-platform=${RDS_DIALECT:org.hibernate.dialect.H2Dialect}
+
+
+spring.datasource.url=jdbc:mysql://localhost:3306/company
+spring.datasource.driverClassName=com.mysql.jdbc.Driver
+spring.datasource.username=root
+spring.datasource.password=admin
+#spring.jpa.database-platform=org.hibernate.dialect.MySQL8Dialect
+
+
+2.Spring Boot -JdbcTemplate -Application
+
 
 
 
