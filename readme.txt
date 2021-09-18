@@ -747,8 +747,9 @@ spring.mvc.view.suffix=.jsp
 		
 
 
-day7:  11-Sep-2021 
+day7:  12-Sep-2021 
 ======================
+
 Todays Topics
 ==============
 1.Spring Boot Security Customization
@@ -907,7 +908,165 @@ spring.datasource.password=admin
 2.Spring Boot -JdbcTemplate -Application
 
 
+CustomerService
+              CustomerDao
+                      JdbcTemplate
+                                DataSource
+                                       driverClassName
+                                       url
+                                       username
+                                       password
 
+
+day8:  12-Sep-2021 
+==================
+1.Spring  Data JPA -  MySQL
+2.Spring -Data MongoDB -  MongoDB
+3.Hibernate Relations
+
+
+
+Spring Data JPA SQL
+Persist data in SQL stores with Java Persistence API using Spring Data and Hibernate.
+
+
+JPA -Java Persistence API  -ORM Specification
+
+    Hibernate 
+	ibatis
+    toplink
+
+	
+Object Relational Mapping
+
+============================================
+            Customer
+===========================================
+Id      Name     email           Mobile
+============================================
+101     Pradeep p@gmail.com      9836353535      Customer c=new Customer(101,"Pradeep" ,"P@gmail.com","9836353535");
+102     Sachin  s@gmail.com      8836353535
+ 
+
+
+
+@Entity
+@Table(name="pc_customers")
+class Customer{
+@Id
+@Column(name="Id")
+private int id;
+private String name;
+private String email;
+privste String mobile
+} 
+ 
+ 
+                                      CRUDRepository
+                                            |
+                                   PaginAndSortingRepository
+                                            |
+                ----------------------------------------------------------
+                |                                                        |  				
+            JPARepository                                          MongoRepository
+
+
+
+
+Mongo DB  -NOSQL
+=================
+
+https://www.tutorialspoint.com/mongodb/index.htm
+
+
+The following table shows the relationship of RDBMS terminology with MongoDB.
+
+================================================================
+RDBMS	                                     MongoDB
+================================================================
+Database	                                  Database
+Table	                                      Collection
+Tuple/Row	                                  Document
+column	                                      Field
+Table Join	                                  Embedded Documents
+Primary Key	                                  Primary Key (Default key _id provided by MongoDB itself)
+
+Database Server and Client
+
+mysqld/Oracle	                                   mongod  -Server
+mysql/sqlplus	                                   mongo   -Client  
+
+
+MySQL Workbench                                     ROBOMONGO
+SQL Developer                                       Mongo Compass  
+
+
+
+
+
+MongoDB  download  
+==================
+https://fastdl.mongodb.org/windows/mongodb-windows-x86_64-5.0.2-signed.msi
+
+
+
+To start mongo db server  (default it needs folder c:\data\db so first create it)
+=========================
+C:\Program Files\MongoDB\Server\4.4\bin\>mongod
+
+
+C:\Program Files\MongoDB\Server\4.4\bin\>mongod --dbpath e:\xyz
+
+
+
+3.Hibernate Relations
+======================
+1.One to One         => Employee =>EmployeeAddress
+2.One to Many        => Group    => Stories
+3.Many To One        => Stories  =>Group
+4.Many to Many       => Book     => Author 
+
+           
+Day 9
+=========
+1.Spring AOP
+2.Google Oauth Security
+3.Valdiations
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+Shopping Cart Case Study
+=========================
+https://o7planning.org/10683/create-a-shopping-cart-web-application-with-spring-boot-hibernate
+
+
+Spring Boot Shopping Cart Tutorial with MySQL Database, Thymeleaf, Bootstrap and jQuery
+https://www.youtube.com/watch?v=rFSxmKen6aQ
+
+
+
+
+									   
 
 
 
