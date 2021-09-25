@@ -1026,12 +1026,159 @@ C:\Program Files\MongoDB\Server\4.4\bin\>mongod --dbpath e:\xyz
 3.Many To One        => Stories  =>Group
 4.Many to Many       => Book     => Author 
 
-           
+   
+  
 Day 9
 =========
 1.Spring AOP
-2.Google Oauth Security
+2.Spring AOP Transaction
 3.Valdiations
+3.Google Oauth Security
+
+
+
+Spring AOP  (Aspect Oriented Programming)
+===========================================
+
+
+Application Requirement    =     Functional requirement           + Non Functional requriement
+
+
+Net Banking                =      withdraw                        +  Security  
+                                  deposit                            logging
+                                  fundTransfer   					 tx management			
+
+
+Application  Logic	       =       Business Logic                 + common logic
+
+                              
+Concern :   Piece of code 
+
+Application Code           =       Core Concern                   + Corss cutting concern
+
+
+Why we need AOP?
+
+AOP is used to separate Cross Cutting Concern from Core Concern and attach that Cross Cutting Concern to Core Concern dynamaically at run time.
+
+
+Can't we separate Cross Cutting Concern from Core Concern using Object Oriented Programming? 
+
+Yes ,But it is a static apporach.Every thing we have to decide in advance.
+
+
+Core Concern
+=============
+
+class Bank{
+
+  public boolean withdraw(String source,double amount){
+  Securiy s=new Securiy();
+  if(s.login()){
+  }
+  }
+  
+ public boolean deposit(String source,double amount){
+  Securiy s=new Securiy();
+  if(s.login()){
+  }
+  
+  }
+  
+ public boolean fundTransfer(String source,String destnation,double amount){
+  Securiy s=new Securiy();
+  if(s.login()){
+  }
+   
+ }
+}
+
+Corss Cutting Concern
+=====================
+
+class Security{
+
+ boolean login(String username,String password){
+ 
+ }
+
+}
+
+
+Does AOP replace OOP?
+
+No ,AOP complements OOP
+
+
+AOP terminologies?
+===================
+1.Target :It is piece of code that implements Core concern.
+          Ex. Bank
+
+2.Advice :It is a piece of code that implements Cross Cutting Concern
+         
+		 what to execute and when to execute
+
+          Ex. login  
+		  
+before          :It executes before of method excutes. 
+after           :It executes irrespective of method excutes successfully or not. similar to finally
+afterreturning  :It executes irrespective of method excutes successfully only
+afterthrowing   :It executes when method throws the exception. 
+around 		    :It is a combination of before,after,afterreturn and after throwing 
+ 
+ 
+AOP use cases
+============= 
+logging-related          =around
+security checks          =before
+transaction management   =after return ,after after throwing 
+tweaking of a legacy application 
+		  
+
+3.Join point :It is a well defined point in Core concern  where you want to execute the Cross cutting concern.
+
+        1.When class is loaded
+		2.When method is called
+        3.When constructor is invoked
+
+Spring supports only method call as a join point
+
+
+4.Point cut :It is set of one or more join points
+             
+
+5.Aspect : Advice + Point Cut
+
+           What +When + Where          
+
+6.Weaving : It is mechanism of attaching the CCC to CC.
+
+
+
+
+
+
+
+
+
+  
+
+
+ 							  
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
