@@ -1032,9 +1032,6 @@ Day 9
 =========
 1.Spring AOP
 2.Spring AOP Transaction
-3.Valdiations
-3.Google Oauth Security
-
 
 
 Spring AOP  (Aspect Oriented Programming)
@@ -1155,6 +1152,12 @@ Spring supports only method call as a join point
 6.Weaving : It is mechanism of attaching the CCC to CC.
 
 
+
+3.Google Oauth Security
+
+      https://www.tutorialspoint.com/spring_boot/spring_boot_google_oauth2_sign_in.htm
+
+4.Valdiations
 
 
 
