@@ -1,0 +1,657 @@
+Micro Service with Spring Boot    (30 hours)
+============================================
+Enterprise -Business Orgnization
+
+Colleges - online adission,online result,
+Hotels   - book/cancel
+Hospital - appointent 
+Banks    -withdraw,deposit,fundtransfer
+Schools  - online adission,online result,
+
+
+Domains
+=======
+Banking
+MAnufacturing
+Reatil & Logistic
+Healthcare
+Eccommerce (Online Shopping)
+
+-ease/assist the business
+
+
+-business requirement -
+-Technology (Skilled resoures) -java ,.net,python,php,nodejs,
+
+
+Domain Driven design
+
+RESTful Web service
+
+/customers                                  GET
+/customers/1                                GET
+/customers/1                                PUT
+/customers/1                                DELETE               @PathVariable   
+/customers?customerId=1                     GET
+/customers?city=Pune                        GET
+/customers?city=Pune&birthyear=1982         GET                  @RequestParam
+
+
+Domain Objects
+================
+Product  - CRUD            java (Spring Web MVC,Spring Boot)  A
+
+
+POST                Create
+GET                 Retrive
+PUT/PATCH           Update 
+DELETE              Delete 
+
+
+REST ful Web services (Services which are accessbible via http urls) Smart end points
+
+
+Java      :   Spring Boot
+
+Node JS   :   Express JS
+
+Python    :   Flask / Django
+
+PHP       :   Wordpress
+
+.Net      :   .Net Web MVC
+
+  
+
+
+
+/products                              GET                       get all products
+/products/1                            GET                       get  product with id 1
+/products/filter?min=1000&max=20000    GET                       get  products with price between 1000 & 20000 
+
+/products/1         DELETE       delete product with id 1
+/products           PUT          update the product
+/products           POST         add the product
+
+
+
+
+
+
+
+Order    - CRUD          nodejs           B
+
+Cart     - CRUD          php              C
+
+Account  - CRUD          .net             D
+
+
+
+
+onlineshopping/produts   -Product-Servie
+
+onlineshopping/orders   -Order-Servie
+
+onlineshopping/cart     -Cart-Servie
+
+onlineshopping/acccount  -account-Servie
+
+
+Service (API)
+
+Enterprise  Application
+=======================
+Colleges
+Hotels
+Hospital
+Banks
+
+
+Bank => withdraw,deposit,fundTransfer,
+
+                withdraw
+fundTransfer   
+                deposit      
+
+
+
+A->B->C->D->E
+
+C =>
+R =>
+U =>
+D =>
+
+
+Customer
+Bank
+Account
+Address
+
+
+Online Shopping Application (Domain Driven Development)
+=======================================================
+MFG
+Insurance 
+HealthCare
+Banking
+Ecommerce domain
+
+
+Customer =>login,register
+Product  =>CRUD
+Payment  =>
+Order    =>
+
+PL  SL DAL  DL 
+              
+SOAP ->WSDL -> Top Down,Bootm up
+             wsgen -> JAva ->WSDL
+             wsimprt->WSDL  -> Java
+			 
+
+Restful Webservice
+=================
+If you are providing service (CRUD ->Domain Objects) via http urls
+
+GET 
+POST
+PUT/PATCH
+DELETE
+			 
+			 
+Domain Objects (5)
+===================
+Product =>CRUD
+
+Customer =>CRUD
+
+Order =>CRUD
+
+Payment =>CRUD
+
+User =>CRUD
+
+product-service  (.Net Web MVC) =>A Team   80 ->IIS   =>1 Instance (100 req)
+============================================================================
+http://localhost:8081/online-shopping/products     =>GET
+http://localhost:8081/online-shopping/products/101 =>GET
+http://localhost:8081/online-shopping/products/101 =>DELETE
+http://localhost:8081/online-shopping/products/101 =>PUT/PATCH
+http://localhost:8081/online-shopping/products     =>POST
+
+customer-service  (Java -Spring Boot)  =>B Team =>  8080
+
+===================================================
+http://localhost:8082/online-shopping/customers     =>GET
+http://localhost:8082/online-shopping/csustomers/101 =>GET
+http://localhost:8082/online-shopping/csustomers/101 =>DELETE
+http://localhost:8082/online-shopping/customers/101 =>PUT
+http://localhost:8082/online-shopping/customers     =>POST
+
+order-service  (Node JS -> Express JS)  => C Team  =>1212
+==================================================
+http://localhost:8083/online-shopping/orders      =>GET
+http://localhost:8083/online-shopping/orders/101 =>GET
+http://localhost:8083/online-shopping/orders/101 =>DELETE
+http://localhost:8083/online-shopping/orders/101 =>PUT
+http://localhost:8083/online-shopping/orders     =>POST
+
+ online-shopping/product                        product-service  ->  1111
+ online-shopping/csutomer                       customer-service ->  2222
+ online-shopping/order       Eureka Server      order-service    ->  3333
+ online-shopping/payment                        payment-service  ->  4444
+ online-shoppinng/user                          user-service     ->  5555
+
+
+
+Day1
+====
+1.What is MCA?
+================
+Microservices - also known as the microservice architecture - is an architectural style that structures an application as a collection of services that are
+
+	1.Highly maintainable and testable
+	2.Loosely coupled
+	3.Independently deployable
+	4.Organized around single business capabilities. 
+	  (Single Responsibility Principle)
+	
+The microservice architecture enables the continuous delivery/deployment of large, complex applications. It also enables an organization to evolve its technology stack.
+
+1.MCA Vs Monolithic
+
+2.Adantages of MCA
+
+	1.Highly maintainable and testable
+	2.Loosely coupled
+	3.Independently deployable
+	4.Organized around business capabilities.
+
+3.Challanges of MCA
+   1.Avaialabilty  (Cloud)
+   2.Scaling       (Cloud)  
+   3.Monitoring -logs,loads,heap,memory ->actuator -> Admin Server (Cloud)
+   4.Integration   (Cloud)
+
+
+AWS 
+Azure
+GCP
+
+
+4.Orchestration and Choreography
+
+5.What is TDD,BDD,DDD,MDD?
+6.SOLID Design Principles
+7.Design Patterns(creational,Structural,Behavioural)
+8.12 Factor Application
+
+What is DDD?
+=============
+Domain Driven Design is a way of looking at software from top down.
+When we are developing a software our focus should not be primarily on technology,It should be primaryly on business or whatever activity we are trying to assist with software,domain
+The domain is the business that we are trying to solve/assist with software.
+The domain can be any business domain
+
+Aviation domain
+Railway domain
+Banking domain
+Insurance domain
+Manufacturing domain
+Ecommerce domain
+
+Specifically we approach that by trying to develop the models of that domain and make our software confirmed to that.
+
+What DDD gives us?
+===================
+Strategic Design Tool
+Tactical Design Tools
+
+
+Service
+Project
+Layers(Service/Data Access Layer,Controller)
+Modules
+Design Patterns
+OOP
+Classes
+Objects
+Exe/Jar/war/ear
+
+Why We should go for DDD?
+1.	To improve your craft
+2.	As a software developer you want to grow
+3.	You want to take a responsibility
+4.	You want to design things from scratch
+
+
+It’s not a customers job what they want (Steve Jobs)
+What problems this customer is going to face in the future
+If you want to give any new feature it should go from your side
+
+Your architecture might be fabulous but it’s the end user ultimately who decides whether your system is fabulous or not.
+
+A system that doesn’t solve the business needs is of no use to any one, no matter how pretty it looks or how well architected it’s infrastructure.
+
+
+
+
+##########
+What is the difference between Orchestration and Choreography in Microservices architecture?
+################ 
+In Orchestration, we rely on a central system to control and call various Microservices to complete a task.
+
+In Choreography, each Microservice works like a State Machine and reacts based on the input from other parts. 
+
+Orchestration is a tightly coupled approach for integrating Microservices.
+
+But Choreography introduces loose coupling. Also, Choreography based systems are more flexible and easy to change than Orchestration based systems.
+
+Orchestration is often done by synchronous calls. But choreography is done by asynchronous calls. The synchronous calls are much simpler compared to asynchronous communication. 
+
+
+
+
+
+
+                                             withdraw(source,amount)
+fundTransfer(source,desitnation,amount)
+                                             deposit(desination,amount)
+
+
+
+
+
+
+
+S-Single Responsibilty Principle
+
+           
+		   void addEmployee(Employee e){
+		   //add
+		    }
+
+
+
+O-Open Close Principle 
+
+
+       Shape
+
+Rect    Circle 	   
+
+          class PaintBrush{
+		  
+		  
+		  drawShape(Shape s){
+		  s.draw();
+		  }
+		  
+		   	  
+		  
+		  }
+
+  
+		  
+		  
+		  
+		  
+
+L-Liscovs Substituion Principle
+I-Interface segration principle
+
+interface Flyable{
+void fly();
+}
+
+interface Drivable{
+void drive();
+}
+
+
+              Vehicle 
+
+Bus    Truck    Bike 	 implements Drivable
+Aeroplane    Helicapter   implement Flyable,Drivable		  
+			  
+
+
+
+
+
+D-Dependency Injection
+
+          interface EmployeeInterface{
+           Collection<Employee> getEmployeeList()
+		  }
+
+
+
+=========================
+The Twelve Factors
+==========================
+          This is best practices to develop spring cloud native applications
+
+I. Codebase
+One codebase tracked in revision control, many deploys
+II. Dependencies
+Explicitly declare and isolate dependencies
+III. Config
+Store config in the environment
+IV. Backing services
+Treat backing services as attached resources
+V. Build, release, run
+Strictly separate build and run stages
+VI. Processes
+Execute the app as one or more stateless processes
+VII. Port binding
+Export services via port binding
+VIII. Concurrency
+Scale out via the process model
+IX. Disposability
+Maximize robustness with fast startup and graceful shutdown
+X. Dev/prod parity
+Keep development, staging, and production as similar as possible
+XI. Logs
+Treat logs as event streams
+XII. Admin processes
+Run admin/management tasks as one-off processes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Endpoints:
+
+1)RESTful Webservices (Smart Endpoints)
+  - HTTP/HTTPS
+
+2)Dumps Pipes :(MQ)  JMS
+  - Queue
+  - Topic
+
+AMQP
+------------------------------------------
+
+1.storeapp: (2.3.8.RELEASE)
+    -Starters:
+          -H2
+          -Spring Web
+          -Spring Boot Actuator
+          -Spring Boot DevTools
+
+
+--------------------------------------------
+
+Spring IOC
+                  @Component
+
+@Controller        @Service     @Reposiotory
+@RestController
+
+----------------------------------------------------
+/products               GET
+/products               POST
+/products/1             PUT
+/products/1             GET
+/products/1             DELETE
+-------------------------------------------------------
+
+
+
+Day 2:
+
+Spring Core  - environment -application.properties
+
+1000 Microservices
+   - application.properties (dev)
+
+1000 .properties fo
+
+    - Dev,Test,Prod
+
+3000 .properties    
+
+----------------------------------------------
+application-dev.properties
+
+/application/dev
+/application/dev/master
+
+application-prod.properties
+
+/application/prod
+/application/prod/master
+
+product-service-prod.properties
+
+/product-service/prod
+-----------------------------------------------------
+https://springio.projects/spring-cloud-config
+
+Spring Cloud Config :(Distrubuted Configuration)
+Spring Cloud Config provides server and client-side support for externalized configuration in distrubuted system.
+
+Features:
+
+Spring Cloud Config Server features:
+ a)HTTP,resource-based API for external-configuration (name-value pairs or equivalent YAML content)
+ b)Encrypt and decrypt property values (symmetric & asymmetric)
+ c)Embeddable easily in a Spring Boot application using @EnableConfigServer
+
+
+Config Client features (for Spring applications)
+a) Bind to config server & initialize Spring Environment with remote property sources.
+b)Encrypt & decrypt property values (symmetrice or asymmetric)
+
+
+Steps:
+
+Step 1: Setup the Git Reposiotry & upload application.properties file
+
+https://github.com/pvc2021/spring-boot-configuration
+
+------------------------------
+
+Step 2:
+Spring Cloud Config Server:
+
+2.1) Create new project (cloudserver-config)
+   -Select starters
+    -Config Server
+    -Spring Boot Actuator
+
+2.2)Add @EnableConfigServer in Application Class (main method)
+
+2.3) In application properties
+
+server.port=8888
+spring.cloud.config.server.git.uri=https://github.com/pradeepch82/spring-cloud
+
+2.4)Start the Application
+
+2.5)Check it
+http://localhost:8888/{name}/{label}
+http://localhost:8888/application/default/master
+ -application.properties
+
+
+
+http://localhost:8888/application-default.properties
+http://localhost:8888/application-default.json
+
+http://localhost:8888/application-dev.properties
+http://localhost:8888/application-dev.json
+
+
+
+Step 3:
+Spring cloud Config Client :(product-service) 
+
+3.1)Add spring-cloud-starter-confing starter in pom.xml
+   -Config Client
+3.2) In application.properties:
+    server.port=8080 
+    spring.cloud.config.uri=http://localhost:8888
+3.3)Start the Config Server
+
+3.4)Then Start the storeapp microservice
+------------------------------------------
+1000 Microservice
+-Dev,Test,Prod           
+3000 .properties
+
+dev - Profile (H2)
+application-dev.properties
+prod -Profile (MySQL)
+application-prod.properties
+
+----------------------------
+http://localhost:8888/application/dev/master
+http://localhost:8888/application/prod/master
+
+-------------------------------
+VM Argument
+  -Dspring.profiles.active=dev    in VM Argument
+  -Dspring.profiles.active=prod    in VM Argument
+
+Config Client <---> Config server  <---> Github
+        N               1
+
+-------------------------------------------------
+Renamed
+application-dev.properties
+application-prod.properties
+
+to 
+
+product-service-dev.properties
+producct-service-prod.properties
+
+----------------------------------------
+
+Test Config server
+
+
+http://localhost:8888/product-service/dev/master
+http://localhost:8888/product-service/prod/master
+
+---------------------------------------------
+Storeapp:
+
+In application.properties
+
+spring.application.name=productservice
+
+
+VM Argument
+  -Dspring.profiles.active=dev    in VM Argument
+  -Dspring.profiles.active=prod    in VM Argument
+
+-------------------------------------------------
+http://localhost:8080/actuator/env
+
+2 Solution
+1)Restart the application
+
+2)Spring Cloud Config Client  
+    -Actuator - /refresh
+
+
+Steps to enable Actuator:
+
+1)Add the dependency in pom.xml
+<dependency>
+<groupId>org.springframework.boot</groupId>
+<artifactId>spring-boot-starter-atuator</artifactId>
+</dependency>
+
+
+2)In application.properties file
+management.endpoints.web.exposure.include=*
+
+3)Exposing 15 Endpoints(s) beneath base path '/actuator'
+  -actuator/refresh/   (trigger)
+
+- POST method
+
+POSTMAN
+      -POST  -actuator/refresh
+	  
+	  
+	  
+	
+
+
+
