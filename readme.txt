@@ -1216,6 +1216,106 @@ https://www.youtube.com/watch?v=rFSxmKen6aQ
 
 
 
+1.Smart  End Points  :Restful Web services : synchronus communcation
+2.Dumb Pipes            : JMS: Asynchronus Communications
+
+JavaEE
+
+   JDBC  -API  - helps us to develop a Java application to connect to database for perform CRUD opearions
+   JAAS  -API  - helps us to develop a Java application to implement Authentation and Authorization service
+   JPA  -API    - helps us to develop a Java application to connect to database for perform CRUD opearions
+   JMA  -API  -  helps us to develop a Java application to send and receive the mails
+   JMS  -API  - helps us to develop a Java application to send and receivie the message in synchronus as well as asynchronus
+
+Java Messaging Service
+======================
+1.Synchronus Communcation              :Phone calling,Video conference calling.
+                             1.Sender and Receiver should be online
+
+2.Asynchronus Communication    :Email,Chat,whats app
+
+                             1.Sender and Receiver may or may not  be online
+
+               JMS
+                    1.PTP  ->Point To Point                      :          One to One             :Queue
+ 
+                                                     Producer   :create and send the message
+                                                     Consumer :receive the message 
+                                                       
+                    2.PTS  ->Publisher To Subscriber    :          One to Many           :Topic
+
+                                                     Publisher    :create and send the message
+                                                     Subscriber :receive the message 
+
+                                    1.Durable Subscription
+                                     2.NonDurable Subscription
+
+
+JMS Clients :  Producer,Consumer,Publisher,Subscriber
+
+
+
+JMS Provider
+                    Active MQ   :https://www.apache.org/dyn/closer.cgi?filename=/activemq/5.16.3/apache-activemq-5.16.3-bin.zip&action=download
+                    IBM MQ
+                    Oraccle Web logic
+                    Rabbit MQ
+
+ 
+
+   Active MQ   :https://www.apache.org/dyn/closer.cgi?filename=/activemq/5.16.3/apache-activemq-5.16.3-bin.zip&action=download
+
+
+   To start Active MQ :
+
+               C:\apache-activemq-5.16.3\bin\>activemq start  <enter>
+
+
+Open the browser  :   http://127.0.0.1:8161/   or   http://localhost:8161/
+
+   Default username : admin
+   Default password : admin
+ 
+
+
+                
+Producer
+
+                JMSTemaplate   ,Queue
+
+                                  ActiveMQConnectionFactory
+                                                            brokerURL
+
+
+
+
+
+                          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 									   
 
 
